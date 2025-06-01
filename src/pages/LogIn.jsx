@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from 'react-icons/fa';
+import SocialLogin from './shared/SocialLogin';
 
 const LogIn = () => {
   const { signInUser, setUser } = useContext(AuthContext);
@@ -82,13 +83,12 @@ const LogIn = () => {
           <span className="text-gray-400 text-sm">or</span>
         </div>
 
-        <button
+  
+         
+        
+          <SocialLogin></SocialLogin>
+     
        
-          className="w-full flex items-center justify-center gap-2 bg-blue-600  text-white py-2 rounded hover:bg-blue-800 transition"
-        >
-          <FaGoogle></FaGoogle>
-          Continue with Google
-        </button>
       </div>
     </div>
   ); 

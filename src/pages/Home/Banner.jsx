@@ -96,7 +96,7 @@ const Banner = () => {
             ))}
           </Swiper>
           {/* Category Navigation Bar */}
-          <div className="bg-black text-white px-4 py-3 flex flex-wrap justify-center gap-6 text-sm md:text-base border-t border-gray-700">
+          <div className="bg-black text-white px-4 py-3 flex flex-wrap justify-center gap-6 text-sm md:text-base border-t border-gray-700 ">
             <div className="flex items-center gap-2 hover:text-blue-400 cursor-pointer">
               <span className="text-lg">
                 <FaLaptop />

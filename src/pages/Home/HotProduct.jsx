@@ -9,11 +9,16 @@ const HotProduct = () => {
             .then(data=>setJobs(data))
       },[])
       return (
-            <div>
-            <div>
-                  {products.map(product=><HotProductCard key={product._id} product={product}></HotProductCard>)}
-            </div>
-            </div>
+        <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-black gap-4 ">
+            {products.map((product) => (
+              <HotProductCard
+                key={product._id}
+                product={product}
+              ></HotProductCard>
+            ))}
+          </div>
+        </div>
       );
 };
 

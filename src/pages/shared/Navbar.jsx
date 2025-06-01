@@ -8,6 +8,7 @@ import {
   CgHeart,
   CgShoppingCart,
 } from "react-icons/cg";
+import logo from "../../assets/technology-logo/technology-50.png";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -26,18 +27,27 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <a className="text-white hover:text-blue-400">Pages</a>
+        <Link to="/pages" className="text-white hover:text-blue-400">
+          Pages
+        </Link>
       </li>
       <li>
-        <a className="text-white hover:text-blue-400">Shop</a>
+        <Link to="/shop" className="text-white hover:text-blue-400">
+          Shop
+        </Link>
       </li>
       <li>
-        <a className="text-white hover:text-blue-400">Blog</a>
+        <Link to="/blog" className="text-white hover:text-blue-400">
+          Blog
+        </Link>
       </li>
       <li>
-        <a className="text-white hover:text-blue-400">Landing</a>
+        <Link to="/landing" className="text-white hover:text-blue-400">
+          Landing
+        </Link>
       </li>
     </>
+  
   );
 
   return (
@@ -84,9 +94,18 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="text-2xl font-bold text-white">
-          SmartPickr<span className="text-blue-500">.</span>
-        </Link>
+        <div className="navbar-start">
+          <Link to="/" className="flex flex-col items-center">
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-10 w-10 drop-shadow-[0_0_10px_blue] brightness-150"
+            />
+            <span className="text-white text-lg font-bold">
+              SmartPickr<span className="text-blue-500">.</span>
+            </span>
+          </Link>
+        </div>
       </div>
 
       <div className="navbar-center hidden lg:flex">

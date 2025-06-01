@@ -13,7 +13,7 @@ import { GiCooler } from 'react-icons/gi';
 import img1 from "../../assets/bannerIMG/WP-54778Y Console.jpg";
 import img2 from "../../assets/bannerIMG/mechanical-keyboard-G-5.png";
 import img3 from "../../assets/bannerIMG/Drone.jpg";
-import img4 from "../../assets/bannerIMG/SPELLOND-PRO.png";
+import img4 from "../../assets/bannerIMG/headphone-2.png";
 const Banner = () => {
       const slides = [
         {

@@ -23,26 +23,37 @@ const MyFeedbacks = () => {
         });
     }
   }, [user?.email]);
+
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "You won't be able to undo this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product-Feedback/${id}`, {
+        fetch(`http://localhost:5000/product-application/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your query has been deleted.", "success");
-              setProducts(products.filter((product) => product._id !== id));
+              Swal.fire(
+                "Deleted!",
+                "Your feedback has been deleted.",
+                "success"
+              );
+            } else {
+              Swal.fire("Oops!", "Delete failed. Try again.", "error");
             }
+          })
+          .catch((err) => {
+            console.error(err);
+            Swal.fire("Error!", "Something went wrong.", "error");
           });
       }
     });

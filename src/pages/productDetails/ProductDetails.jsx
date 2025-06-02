@@ -1,13 +1,12 @@
 // src/components/ProductDetails.jsx
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { FaHeart, FaShoppingCart, FaPhone } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
   const product = useLoaderData();
 
-  // Destructure data
   const {
     ProductName,
     ProductPrice,
@@ -15,8 +14,7 @@ const ProductDetails = () => {
     ProductImageURL,
     sku,
     category,
-    helpNumber,
-    helpHours,
+    _id,
   } = product;
 
   const [selectedImage, setSelectedImage] = useState(ProductImageURL[0]);
@@ -94,12 +92,18 @@ const ProductDetails = () => {
         </div>
 
         {/* Help */}
-        <div className="p-4 mt-4 bg-base-200 rounded shadow-sm">
-          <div className="flex items-center gap-2">
+        <div className="p-4 mt-4 bg-base-200 rounded shadow-sm ">
+          <div className="flex items-center gap-1">
             <FaPhone className="" />
-            <span>Need help? Call Us: {helpNumber}</span>
+            <span>Need help? Call Us: 9845364827312</span>
           </div>
-          <p className="text-xs text-gray-600">{helpHours}</p>
+        </div>
+        <div className="mx-auto">
+          <Link to={`/productFeedback/${_id}`}>
+            <button className="btn bg-blue-600 w-full ">
+              Submit Product Feedback
+            </button>
+          </Link>
         </div>
       </div>
     </div>

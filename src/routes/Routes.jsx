@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import LogIn from "../pages/LogIn";
 import ProductDetails from "../pages/productDetails/ProductDetails";
 import PrivateRoute from "./PrivateRoute";
+import AddFeedback from "../pages/addFeedback/AddFeedback";
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
+      },
+      {
+        path: "/productFeedback/:id",
+        element: (
+          <PrivateRoute>
+            <AddFeedback></AddFeedback>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/register",

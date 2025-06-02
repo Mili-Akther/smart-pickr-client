@@ -9,8 +9,6 @@ const HotProductCard = ({ product }) => {
     ProductBrand,
     ProductImageURL,
     ProductTitle,
-    ProductDescription,
-    category,
     ProductPrice,
     _id,
   } = product;
@@ -38,7 +36,7 @@ const HotProductCard = ({ product }) => {
           <h2 className="text-base font-bold mt-2">{ProductName}</h2>
 
           <p className="text-sm text-gray-600 mt-1">{ProductTitle}</p>
-          <div className="badge p-2 bg-blue-600">SALE</div>
+          {/* <div className="badge p-2 bg-blue-600 border-none">SALE</div> */}
           <span className="flex items-center font-semibold text-xl mt-2">
             <FaDollarSign className="text-md" />
             {ProductPrice}
@@ -46,7 +44,7 @@ const HotProductCard = ({ product }) => {
         </div>
         <div className="flex justify-between items-center mt-4 ">
           <Link to={`/products/${_id}`}>
-            <button className="btn btn-xs bg-blue-600 text-sm">
+            <button className="btn btn-xs bg-blue-600 text-sm border-none">
               View Details
             </button>
           </Link>

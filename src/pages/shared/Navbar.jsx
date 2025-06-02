@@ -42,12 +42,11 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/landing" className="text-white hover:text-blue-400">
-          Landing
+        <Link to="/myFeedbacks" className="text-white hover:text-blue-400">
+         My Feedbacks
         </Link>
       </li>
     </>
-  
   );
 
   return (

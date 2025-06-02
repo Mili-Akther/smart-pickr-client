@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const AddFeedback = () => {
   const { id } = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -30,7 +31,8 @@ const AddFeedback = () => {
       boycottReason: boycottReason,
       userName: user.displayName,
       userImage: user.photoURL,
-      date: new Date().toISOString(),
+      // date: Date.now(),
+      date: new Date().toLocaleString("en-GB", { hour12: false }),
       recommendationCount: 0,
     };
 
@@ -51,6 +53,7 @@ const AddFeedback = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate("/myFeedbacks");
         form.reset(); 
       } else {
         Swal.fire({

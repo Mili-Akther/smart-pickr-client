@@ -7,6 +7,7 @@ import ProductDetails from "../pages/productDetails/ProductDetails";
 import PrivateRoute from "./PrivateRoute";
 import AddFeedback from "../pages/addFeedback/AddFeedback";
 import MyFeedbacks from "../pages/myFeedbacks/MyFeedbacks";
+import UpdateFeedback from "../pages/updateFeedback/UpdateFeedback";
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/updateFeedback/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateFeedback></UpdateFeedback>
+          </PrivateRoute>
+        ),
+      },      
       {
         path: "/register",
         element: <Register></Register>,

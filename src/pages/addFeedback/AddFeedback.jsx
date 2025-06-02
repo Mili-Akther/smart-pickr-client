@@ -141,7 +141,10 @@ const AddFeedback = () => {
           />
         </div>
 
-        <button className="btn btn-neutral mt-4" type="submit">
+        <button
+          className="btn  mt-4 text-white bg-blue-500 hover:bg-blue-600"
+          type="submit"
+        >
           Submit Now
         </button>
       </form>

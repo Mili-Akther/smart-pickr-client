@@ -84,7 +84,7 @@ const MyFeedbacks = () => {
                   </button>
                 </Link>
                 <button
-                  onClick={() => navigate(`/update-query/${_id}`)}
+                  onClick={() => navigate(`/updateFeedback/${_id}`)}
                   className="btn btn-sm btn-warning"
                 >
                   <FaEdit /> Update

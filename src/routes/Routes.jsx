@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddFeedback from "../pages/addFeedback/AddFeedback";
 import MyFeedbacks from "../pages/myFeedbacks/MyFeedbacks";
 import UpdateFeedback from "../pages/updateFeedback/UpdateFeedback";
+import UserConcerns from "../pages/userConcerns/UserConcerns";
+import QueryDetails from "../pages/queryDetails/QueryDetails";
 
 const routes = createBrowserRouter([
   {
@@ -52,7 +54,15 @@ const routes = createBrowserRouter([
             <UpdateFeedback></UpdateFeedback>
           </PrivateRoute>
         ),
-      },      
+      },
+      {
+      path:"/query-details",
+      element:<UserConcerns></UserConcerns> ,
+      },
+      {
+        path:"/query-details/:id",
+      element:<QueryDetails></QueryDetails> ,
+      },
       {
         path: "/register",
         element: <Register></Register>,

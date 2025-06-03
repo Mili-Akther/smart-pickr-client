@@ -81,6 +81,15 @@ const UpdateFeedback = () => {
             className="input input-bordered w-full"
           />
         </div>
+        <div>
+          <label className="label font-semibold">Product Price</label>
+          <input
+            type="text"
+            value={feedback.ProductPrice}
+            readOnly
+            className="input input-bordered w-full"
+          />
+        </div>
 
         <div>
           <label className="label font-semibold">Product Title</label>

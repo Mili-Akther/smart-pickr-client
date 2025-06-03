@@ -43,7 +43,12 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/myFeedbacks" className="text-white hover:text-blue-400">
-         My Feedbacks
+          My Feedbacks
+        </Link>
+      </li>
+      <li>
+        <Link to="/query-details" className="text-white hover:text-blue-400">
+          User Concerns
         </Link>
       </li>
     </>

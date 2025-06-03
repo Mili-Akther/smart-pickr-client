@@ -73,42 +73,52 @@ const MyFeedbacks = () => {
       {/* Query List Section */}
       {products.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map(({ _id, productImage, queryTitle, boycottReason }) => (
-            <div
-              key={{ _id }}
-              className="bg-white shadow-lg rounded-lg p-4 space-y-3 border"
-            >
-              <img
-                src={productImage}
-                alt=""
-                className="w-full h-40 object-cover rounded-md"
-              />
-              <h3 className="text-xl font-semibold">{queryTitle}</h3>
-              <p className="text-sm text-gray-600">{boycottReason}</p>
-              <div className="flex justify-between">
-                <Link to={`/products/${_id}`}>
+          {products.map(
+            ({
+              _id,
+              productImage,
+              queryTitle,
+              boycottReason,
+              ProductPrice,
+            }) => (
+              <div
+                key={{ _id }}
+                className="bg-white shadow-lg rounded-lg p-4 space-y-3 border"
+              >
+                <img
+                  src={productImage}
+                  alt=""
+                  className="w-full h-40 object-cover rounded-md"
+                />
+                <h3 className="text-xl font-semibold">{queryTitle}</h3>
+                <h2 className="text-md">${ProductPrice}</h2>
+                <p className="text-sm text-gray-600">{boycottReason}</p>
+
+                <div className="flex justify-between">
+                  <Link to={`/products/${_id}`}>
+                    <button
+                      onClick={() => navigate(`/query-details/${_id}`)}
+                      className="btn btn-sm  bg-blue-500 hover:bg-blue-600 border-none"
+                    >
+                      <FcViewDetails /> View Details
+                    </button>
+                  </Link>
                   <button
-                    onClick={() => navigate(`/query-details/${_id}`)}
-                    className="btn btn-sm  bg-blue-500 hover:bg-blue-600 border-none"
+                    onClick={() => navigate(`/updateFeedback/${_id}`)}
+                    className="btn btn-sm btn-warning"
                   >
-                    <FcViewDetails /> View Details
+                    <FaEdit /> Update
                   </button>
-                </Link>
-                <button
-                  onClick={() => navigate(`/updateFeedback/${_id}`)}
-                  className="btn btn-sm btn-warning"
-                >
-                  <FaEdit /> Update
-                </button>
-                <button
-                  onClick={() => handleDelete(_id)}
-                  className="btn btn-sm btn-error"
-                >
-                  <RiDeleteBin2Fill /> Delete
-                </button>
+                  <button
+                    onClick={() => handleDelete(_id)}
+                    className="btn btn-sm btn-error"
+                  >
+                    <RiDeleteBin2Fill /> Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       ) : (
         <div className="text-center mt-10">

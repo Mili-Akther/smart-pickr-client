@@ -27,12 +27,14 @@ const AddFeedback = () => {
       productName: product.ProductName,
       productBrand: product.ProductBrand,
       productImage: product.ProductImageURL,
+      ProductPrice: product.ProductPrice,
       queryTitle: productTitle,
       boycottReason: boycottReason,
       userName: user.displayName,
       userImage: user.photoURL,
       // date: Date.now(),
       date: new Date().toLocaleString("en-GB", { hour12: false }),
+
       recommendationCount: 0,
     };
 
@@ -100,6 +102,17 @@ const AddFeedback = () => {
             name="productBrand"
             type="text"
             value={product.ProductBrand}
+            readOnly
+            className="input input-bordered w-full"
+          />
+        </div>
+        {/* Product Price */}
+        <div>
+          <label className="label font-semibold">Product Price</label>
+          <input
+            name="productProductPrice"
+            type="text"
+            value={product.ProductPrice}
             readOnly
             className="input input-bordered w-full"
           />

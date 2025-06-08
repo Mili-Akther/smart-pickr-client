@@ -10,6 +10,7 @@ import MyFeedbacks from "../pages/myFeedbacks/MyFeedbacks";
 import UpdateFeedback from "../pages/updateFeedback/UpdateFeedback";
 import UserConcerns from "../pages/userConcerns/UserConcerns";
 import QueryDetails from "../pages/queryDetails/QueryDetails";
+import ShopAllProducts from "../pages/shopAllProducts/ShopAllProducts";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/shopAllProducts",
+        element: <ShopAllProducts></ShopAllProducts>,
       },
       {
         path: "/products/:id",
@@ -56,13 +61,14 @@ const routes = createBrowserRouter([
         ),
       },
       {
-      path:"/query-details",
-      element:<UserConcerns></UserConcerns> ,
+        path: "/query-details",
+        element: <UserConcerns></UserConcerns>,
       },
       {
-        path:"/query-details/:id",
-      element:<QueryDetails></QueryDetails> ,
+        path: "/query-details/:id",
+        element: <QueryDetails></QueryDetails>,
       },
+     
       {
         path: "/register",
         element: <Register></Register>,

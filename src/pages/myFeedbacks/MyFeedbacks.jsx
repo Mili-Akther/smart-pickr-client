@@ -97,7 +97,7 @@ const MyFeedbacks = () => {
                 <div className="flex justify-between">
                   <Link to={`/products/${_id}`}>
                     <button
-                      onClick={() => navigate(`/query-details/${_id}`)}
+                   
                       className="btn btn-sm  bg-blue-500 hover:bg-blue-600 border-none"
                     >
                       <FcViewDetails /> View Details

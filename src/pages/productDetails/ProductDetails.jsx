@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { FaHeart, FaShoppingCart, FaPhone } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import ReviewForm from "../reviewForm/ReviewForm";
 
 const ProductDetails = () => {
   const product = useLoaderData();
@@ -17,11 +18,11 @@ const ProductDetails = () => {
     _id,
   } = product;
 
-  const [selectedImage, setSelectedImage] = useState(ProductImageURL[0]);
+  const [selectedImage, setSelectedImage] = useState(ProductImageURL?.[0]);
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="max-w-4xl mx-auto py-10 grid md:grid-cols-2 gap-10 ">
+    <div className="max-w-6xl mx-auto py-10 grid md:grid-cols-2 ">
       {/* LEFT: Image Gallery */}
       <div>
         <motion.img
@@ -91,20 +92,30 @@ const ProductDetails = () => {
           </p>
         </div>
 
-        {/* Help */}
-        <div className="p-4 mt-4 bg-base-200 rounded shadow-sm ">
-          <div className="flex items-center gap-1">
-            <FaPhone className="" />
-            <span>Need help? Call Us: 9845364827312</span>
+        <div className="flex flex-col sm:flex-row items-center gap-6  mt-6">
+          {/* Help Box */}
+          <div className="bg-base-200 rounded shadow-sm px-4 h-14 flex items-center w-full sm:w-[280px]">
+            <div className="flex items-center gap-2 text-sm sm:text-base">
+              <FaPhone />
+              <span>Need help? Call Us: 9845364827312</span>
+            </div>
           </div>
-        </div>
-        <div className="mx-auto">
-          <Link to={`/productFeedback/${_id}`}>
-            <button className="btn bg-blue-600 w-full ">
-              Submit Product Feedback
-            </button>
+
+          {/* Submit Feedback Button */}
+          <div className="w-full sm:w-[230px]">
+            <Link to={`/productFeedback/${_id}`}>
+              <button className="btn bg-blue-600 text-white w-full h-14 text-sm sm:text-base hover:bg-blue-700">
+                Submit Product Feedback
+              </button>
+            </Link>
+          </div>
+          <Link to={`/product-application/${product._id}`}>
+            View Recommendations
           </Link>
         </div>
+      </div>
+      <div className="">
+        <ReviewForm></ReviewForm>
       </div>
     </div>
   );

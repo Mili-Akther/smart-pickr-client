@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FcLikePlaceholder } from "react-icons/fc";
+import { Link } from "react-router";
 
 const ShopAllProducts = () => {
   const [products, setProducts] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc");
-
+ 
   useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => {
-     
         const sortedData = [...data].sort(
           (a, b) => b.ProductPrice - a.ProductPrice
         );
@@ -69,10 +69,16 @@ const ShopAllProducts = () => {
                 Recommend
               </button>
             </div>
-
-            <button className="btn btn-sm mt-3 w-full bg-blue-500 text-white hover:bg-blue-600">
-              Buy Now
-            </button>
+            <div className="mt-3 flex items-center gap-1">
+              <button className="btn btn-sm mt-3  bg-blue-500 text-white hover:bg-blue-600">
+                Buy Now
+              </button>
+              <Link to={`/products/${product._id}`}>
+                <button className="btn btn-sm mt-3  bg-blue-500 text-white hover:bg-blue-600">
+                  View More Details
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>

@@ -11,6 +11,8 @@ import UpdateFeedback from "../pages/updateFeedback/UpdateFeedback";
 import UserConcerns from "../pages/userConcerns/UserConcerns";
 import QueryDetails from "../pages/queryDetails/QueryDetails";
 import ShopAllProducts from "../pages/shopAllProducts/ShopAllProducts";
+import Recommendations from "../pages/recommendations/Recommendations";
+
 
 const routes = createBrowserRouter([
   {
@@ -29,9 +31,9 @@ const routes = createBrowserRouter([
       {
         path: "/products/:id",
         element: (
-          <PrivateRoute>
+         
             <ProductDetails></ProductDetails>
-          </PrivateRoute>
+     
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
@@ -68,6 +70,11 @@ const routes = createBrowserRouter([
         path: "/query-details/:id",
         element: <QueryDetails></QueryDetails>,
       },
+      {
+        path: "/product/:queryId",
+        element: <Recommendations></Recommendations>,
+      },
+   
      
       {
         path: "/register",

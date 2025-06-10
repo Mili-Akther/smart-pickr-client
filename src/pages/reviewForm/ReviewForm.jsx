@@ -1,87 +1,81 @@
-import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ReviewForm = () => {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
-  const [name, setName] = useState("");
-  const [review, setReview] = useState("");
   const product = useLoaderData();
+  const { _id } = product;
 
-  const {
-    _id,
-  } = product;
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const reviewData = {
-      rating,
-      name,
-      review,
-      _id,
-    };
-    console.log("Submitted Review:", reviewData);
-   
+  // Mock rating data — replace with real backend data later
+  const ratingData = {
+    total: 6,
+    breakdown: {
+      5: 72,
+      4: 0,
+      3: 0,
+      2: 0,
+      1: 28,
+    },
+    average: 3.9,
   };
 
   return (
-    <div className=" p-6 rounded-md max-w-7xl mx-auto mt-10 shadow text-black  bg-white ">
-      <h3 className="text-lg font-semibold mb-4">Your Review</h3>
+    <div className="mt-10 p-4 rounded-md w-full sm:max-w-md mx-auto  shadow text-black bg-white">
+      {/* Rating Summary */}
+      <div className="mb-8 border-b pb-6">
+        <h2 className="text-xl font-semibold mb-2">Customer reviews</h2>
 
-      {/* Star Rating */}
-      <div className="flex gap-1 mb-4">
-        {[...Array(5)].map((_, i) => {
-          const starValue = i + 1;
-          return (
-            <label key={i}>
-              <input
-                type="radio"
-                name="rating"
-                className="hidden"
-                value={starValue}
-                onClick={() => setRating(starValue)}
-              />
+        <div className="flex items-center gap-2 mb-1">
+          <div className="flex text-yellow-500">
+            {[...Array(5)].map((_, i) => (
               <FaStar
-                size={24}
-                className="cursor-pointer transition"
-                color={starValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                onMouseEnter={() => setHover(starValue)}
-                onMouseLeave={() => setHover(0)}
+                key={i}
+                color={
+                  i < Math.round(ratingData.average) ? "#ffc107" : "#e4e5e9"
+                }
               />
-            </label>
-          );
-        })}
+            ))}
+          </div>
+          <span className="text-lg font-medium">
+            {ratingData.average.toFixed(1)} out of 5
+          </span>
+        </div>
+
+        <p className="text-sm text-gray-500 mb-4">
+          {ratingData.total} global ratings
+        </p>
+
+        {/* Star Breakdown Bars */}
+        {Object.keys(ratingData.breakdown)
+          .sort((a, b) => b - a)
+          .map((star) => (
+            <div key={star} className="flex items-center gap-2 text-sm mb-1">
+              <span className="w-10">{star} star</span>
+              <div className="relative w-full max-w-md h-3 bg-gray-200 rounded">
+                <div
+                  className="absolute top-0 left-0 h-3 bg-yellow-500 rounded"
+                  style={{ width: `${ratingData.breakdown[star]}%` }}
+                />
+              </div>
+              <span className="w-10 text-right">
+                {ratingData.breakdown[star]}%
+              </span>
+            </div>
+          ))}
       </div>
 
-      {/* Review Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-2 border rounded-md"
-          required
-        />
+      {/* Write Review CTA */}
+      <div className="mt-8">
+        <h3 className="text-lg font-semibold mb-1">Review this product</h3>
+        <p className="text-sm text-gray-600 mb-4">
+          Share your thoughts with other customers
+        </p>
 
-        <textarea
-          placeholder="Review"
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-          className="w-full p-2 h-28 border rounded-md"
-          required
-        />
-
-    
-               <div className="w-full sm:w-[230px]">
-                 <Link to={`/productFeedback/${_id}`}>
-                   <button className="btn bg-blue-600 text-white w-full h-14 text-sm sm:text-base hover:bg-blue-700">
-                     Submit Product Feedback
-                   </button>
-                 </Link>
-               </div>
-      </form>
+        <Link to={`/productFeedback/${_id}`}>
+          <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700">
+            Write a customer review
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -24,20 +24,19 @@ const AddRecommendation = ({ queryData }) => {
 //       return;
 //     }
 
-    const recommendation = {
-      ...formData,
-      queryId: queryData._id.toString(),
-      queryTitle: queryData.ProductTitle,
-      productName: queryData.ProductName,
-      userEmail: queryData.applicant_email,
-      userName: queryData.applicant_name,
-      
-      recommenderEmail: user.email,
-      recommenderName: user.displayName,
-      recommenderImg: user.photoURL,
-      timeStamp: new Date().toISOString(),
-
-    };
+const recommendation = {
+  ...formData,
+  queryId: queryData._id.toString(),
+  queryTitle: queryData.ProductTitle,
+  originalProductName: queryData.ProductName, 
+  recommendedProductName: formData.recommendedProductName, 
+  userEmail: queryData.applicant_email,
+  userName: queryData.applicant_name,
+  recommenderEmail: user.email,
+  recommenderName: user.displayName,
+  recommenderImg: user.photoURL,
+  timeStamp: new Date().toISOString(),
+};
 
     try {
       const res = await fetch("http://localhost:5000/recommendations", {

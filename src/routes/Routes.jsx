@@ -70,10 +70,10 @@ const routes = createBrowserRouter([
         path: "/query-details/:id",
         element: <QueryDetails></QueryDetails>,
       },
-      {
-        path: "/product/:queryId",
-        element: <Recommendations></Recommendations>,
-      },
+      // {
+      //   path: "/product/:queryId",
+      //   element: <Recommendations></Recommendations>,
+      // },
    
      
       {

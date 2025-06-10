@@ -144,7 +144,7 @@ const ProductDetails = ({ currentUser, }) => {
         </div>
 
         <div className="lg:w-1/3">
-          <Recommendations />
+          <Recommendations productName={ProductName} />
         </div>
       </div>
     </div>

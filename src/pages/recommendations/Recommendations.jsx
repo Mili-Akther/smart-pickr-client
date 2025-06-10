@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 
+
 const renderStars = (rating) => {
   const filledStars = Math.floor(rating);
   const stars = [];
@@ -17,12 +18,19 @@ const renderStars = (rating) => {
   return stars;
 };
 
-const Recommendations = () => {
+
+const Recommendations = ({ productName }) => {
   const [recommendations, setRecommendations] = useState([]);
   const [helpfulCounts, setHelpfulCounts] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/recommendations")
+    const url = productName
+      ? `http://localhost:5000/recommendations?productName=${encodeURIComponent(
+          productName
+        )}`
+      : "http://localhost:5000/recommendations";
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setRecommendations(data);
@@ -33,8 +41,7 @@ const Recommendations = () => {
         setHelpfulCounts(initialCounts);
       })
       .catch((err) => console.error("Fetch error:", err));
-  }, []);
-
+  }, [productName]); 
   const handleHelpfulClick = (id) => {
     setHelpfulCounts((prev) => ({
       ...prev,
@@ -88,15 +95,14 @@ const Recommendations = () => {
           <p className=" text-base italic">{rec.recommendationReason}</p>
 
           {/* Images if available */}
-        
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
-              <img
-                src={rec.recommendedProductImage}
-                alt={rec.recommendedProductName}
-                className="h-24 w-full object-cover rounded"
-              />
-            </div>
-         
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+            <img
+              src={rec.recommendedProductImage}
+              alt={rec.recommendedProductName}
+              className="h-24 w-full object-cover rounded"
+            />
+          </div>
 
           {/* Helpful / Report Buttons */}
           <div className="flex gap-4 mt-2">

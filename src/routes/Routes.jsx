@@ -12,6 +12,7 @@ import UserConcerns from "../pages/userConcerns/UserConcerns";
 import QueryDetails from "../pages/queryDetails/QueryDetails";
 import ShopAllProducts from "../pages/shopAllProducts/ShopAllProducts";
 import Recommendations from "../pages/recommendations/Recommendations";
+import MyRecommendations from "../pages/myRecommendations/MyRecommendations";
 
 
 const routes = createBrowserRouter([
@@ -70,11 +71,10 @@ const routes = createBrowserRouter([
         path: "/query-details/:id",
         element: <QueryDetails></QueryDetails>,
       },
-      // {
-      //   path: "/product/:queryId",
-      //   element: <Recommendations></Recommendations>,
-      // },
-   
+      {
+        path: "/my-recommendations",
+        element:<MyRecommendations></MyRecommendations>
+      },
      
       {
         path: "/register",

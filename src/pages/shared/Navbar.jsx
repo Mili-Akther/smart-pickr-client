@@ -37,8 +37,12 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/blog" className="text-white hover:text-blue-400">
-          Blog
+        {" "}
+        <Link
+          to="/my-recommendations"
+          className="text-white hover:text-blue-400"
+        >
+          My Recommendations
         </Link>
       </li>
       <li>

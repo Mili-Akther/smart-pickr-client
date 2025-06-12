@@ -13,6 +13,7 @@ import QueryDetails from "../pages/queryDetails/QueryDetails";
 import ShopAllProducts from "../pages/shopAllProducts/ShopAllProducts";
 import Recommendations from "../pages/recommendations/Recommendations";
 import MyRecommendations from "../pages/myRecommendations/MyRecommendations";
+import RecommendationsForMe from "../pages/recommendationsForMe/RecommendationsForMe";
 
 
 const routes = createBrowserRouter([
@@ -75,7 +76,10 @@ const routes = createBrowserRouter([
         path: "/my-recommendations",
         element:<MyRecommendations></MyRecommendations>
       },
-     
+      {
+        path: "/recommendations-for-me",
+        element: <RecommendationsForMe></RecommendationsForMe>
+      },
       {
         path: "/register",
         element: <Register></Register>,

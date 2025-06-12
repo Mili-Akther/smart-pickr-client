@@ -34,11 +34,14 @@ const ProductDetails = ({ currentUser, }) => {
         <div>
           <motion.img
             key={selectedImage}
+            src={selectedImage}
+            alt="Selected"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             className="w-full object-contain rounded-lg shadow-md "
           />
+
           <div className="flex gap-2 mt-4 overflow-x-auto scrollbar-hide">
             <img
               key={ProductImageURL}

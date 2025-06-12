@@ -29,7 +29,7 @@ const Recommendations = ({ productName }) => {
           productName
         )}`
       : "http://localhost:5000/recommendations";
-
+  
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

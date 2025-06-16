@@ -6,7 +6,7 @@ const UserConcerns = () => {
   const [queries, setQueries] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/queries")
+    fetch("https://smart-pickr-server.vercel.app/queries")
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a, b) => b.ProductPrice - a.ProductPrice);
@@ -15,9 +15,12 @@ const UserConcerns = () => {
   }, []);
 
   const handleRecommend = (id) => {
-    fetch(`http://localhost:5000/product-application/recommend/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://smart-pickr-server.vercel.app/product-application/recommend/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -31,7 +34,6 @@ const UserConcerns = () => {
         }
       });
   };
-  
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 text-black">

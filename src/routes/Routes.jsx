@@ -15,7 +15,6 @@ import Recommendations from "../pages/recommendations/Recommendations";
 import MyRecommendations from "../pages/myRecommendations/MyRecommendations";
 import RecommendationsForMe from "../pages/recommendationsForMe/RecommendationsForMe";
 
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -32,13 +31,9 @@ const routes = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        element: (
-         
-            <ProductDetails></ProductDetails>
-     
-        ),
+        element: <ProductDetails></ProductDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://smart-pickr-server.vercel.app/products/${params.id}`),
       },
       {
         path: "/productFeedback/:id",
@@ -74,11 +69,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/my-recommendations",
-        element:<MyRecommendations></MyRecommendations>
+        element: <MyRecommendations></MyRecommendations>,
       },
       {
         path: "/recommendations-for-me",
-        element: <RecommendationsForMe></RecommendationsForMe>
+        element: <RecommendationsForMe></RecommendationsForMe>,
       },
       {
         path: "/register",

@@ -10,7 +10,7 @@ const AddFeedback = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://smart-pickr-server.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
@@ -39,11 +39,14 @@ const AddFeedback = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/product-application", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(productFeedback),
-      });
+      const res = await fetch(
+        "https://smart-pickr-server.vercel.app/product-application",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(productFeedback),
+        }
+      );
 
       const data = await res.json();
 
@@ -56,7 +59,7 @@ const AddFeedback = () => {
           timer: 1500,
         });
         navigate("/myFeedbacks");
-        form.reset(); 
+        form.reset();
       } else {
         Swal.fire({
           icon: "error",
@@ -74,7 +77,7 @@ const AddFeedback = () => {
     }
   };
 
-  if (!product) return <p>Loading product details...</p>
+  if (!product) return <p>Loading product details...</p>;
 
   return (
     <div className="max-w-3xl mx-auto p-4">

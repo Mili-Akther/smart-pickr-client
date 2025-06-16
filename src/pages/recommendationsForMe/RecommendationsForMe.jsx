@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FaStar, FaUser, FaCalendarAlt, FaEye } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 
-
 const renderStars = (rating) => {
   const filledStars = Math.floor(rating);
   const stars = [];
@@ -19,40 +18,38 @@ const renderStars = (rating) => {
 };
 
 const RecommendationsForMe = () => {
- const { user } = useAuth();
+  const { user } = useAuth();
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRecommendation, setSelectedRecommendation] = useState(null);
 
   useEffect(() => {
-    if (user?.email) {
-      fetchRecommendationsForMe();
-    }
-  }, [user]);
-  
+    if (!user?.email) return;
 
-  const fetchRecommendationsForMe = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `http://localhost:5000/recommendations-for-me?email=${encodeURIComponent(
-          user.email
-        )}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch recommendations");
+    const fetchRecommendations = async () => {
+      try {
+        console.log("🔔 Fetching recommendations-for-me for:", user.email);
+        const res = await fetch(
+          `https://smart-pickr-server.vercel.app/recommendations-for-me?email=${encodeURIComponent(
+            user.email
+          )}`
+        );
+        if (!res.ok) {
+          throw new Error("Failed to fetch recommendations");
+        }
+        const data = await res.json();
+        console.log("📥 Data from server:", data);
+        setRecommendations(data);
+      } catch (err) {
+        console.error("❌ Fetch error:", err);
+        alert("Failed to load recommendations");
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const data = await response.json();
-      setRecommendations(data);
-    } catch (error) {
-      console.error("Error fetching recommendations:", error);
-      alert("Failed to load recommendations");
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetchRecommendations();
+  }, [user?.email]);
 
   const handleViewDetails = (recommendation) => {
     setSelectedRecommendation(recommendation);
@@ -69,11 +66,12 @@ const RecommendationsForMe = () => {
       </div>
     );
   }
-  
 
   return (
     <div className="max-w-7xl mx-auto p-6 text-black">
-      <h1 className="text-3xl font-bold mb-6 text-white">Recommendations For Me</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white">
+        Recommendations For Me
+      </h1>
       <p className="text-gray-600 mb-6">
         See what others have recommended for your queries
       </p>
@@ -206,7 +204,6 @@ const RecommendationsForMe = () => {
                   </div>
 
                   <div className="space-y-6">
-                    {/* Recommended Product */}
                     <div>
                       <h3 className="text-lg font-semibold mb-2">
                         Recommended Product
@@ -228,7 +225,6 @@ const RecommendationsForMe = () => {
                       </div>
                     </div>
 
-                    {/* For Your Query */}
                     <div>
                       <h3 className="text-lg font-semibold mb-2">
                         For Your Query
@@ -241,7 +237,6 @@ const RecommendationsForMe = () => {
                       </p>
                     </div>
 
-                    {/* Recommended By */}
                     <div>
                       <h3 className="text-lg font-semibold mb-2">
                         Recommended By
@@ -263,7 +258,6 @@ const RecommendationsForMe = () => {
                       </div>
                     </div>
 
-                    {/* Rating */}
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Rating</h3>
                       <div className="flex">
@@ -271,7 +265,6 @@ const RecommendationsForMe = () => {
                       </div>
                     </div>
 
-                    {/* Recommendation Reason */}
                     <div>
                       <h3 className="text-lg font-semibold mb-2">
                         Why This Recommendation?
@@ -281,7 +274,6 @@ const RecommendationsForMe = () => {
                       </p>
                     </div>
 
-                    {/* Date */}
                     <div>
                       <h3 className="text-lg font-semibold mb-2">
                         Recommended On

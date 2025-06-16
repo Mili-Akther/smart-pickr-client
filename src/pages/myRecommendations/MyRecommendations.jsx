@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaStar, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-
+import Loading from "../Loading";
 
 const renderStars = (rating) => {
   const filledStars = Math.floor(rating);
@@ -34,7 +34,7 @@ const MyRecommendations = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:5000/my-recommendations?email=${encodeURIComponent(
+        `https://smart-pickr-server.vercel.app/my-recommendations?email=${encodeURIComponent(
           user.email
         )}`
       );
@@ -63,7 +63,7 @@ const MyRecommendations = () => {
     try {
       setDeleteLoading(id);
       const response = await fetch(
-        `http://localhost:5000/recommendations/${id}`,
+        `https://smart-pickr-server.vercel.app/recommendations/${id}`,
         {
           method: "DELETE",
         }
@@ -88,7 +88,7 @@ const MyRecommendations = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
-        <div className="text-lg">Loading your recommendations...</div>
+        <div className="text-lg"><Loading></Loading></div>
       </div>
     );
   }

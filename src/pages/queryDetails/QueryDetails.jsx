@@ -7,7 +7,7 @@ const QueryDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/queries/${id}`)
+    fetch(`https://smart-pickr-server.vercel.app/queries/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setQuery(data);

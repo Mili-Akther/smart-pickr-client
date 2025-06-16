@@ -18,32 +18,34 @@ const AddRecommendation = ({ queryData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
-//     if (!queryData || !user) {
-//       alert("Query data or user info is missing.");
-//       return;
-//     }
+    //     if (!queryData || !user) {
+    //       alert("Query data or user info is missing.");
+    //       return;
+    //     }
 
-const recommendation = {
-  ...formData,
-  queryId: queryData._id.toString(),
-  queryTitle: queryData.ProductTitle,
-  originalProductName: queryData.ProductName, 
-  recommendedProductName: formData.recommendedProductName, 
-  userEmail: queryData.applicant_email,
-  userName: queryData.applicant_name,
-  recommenderEmail: user.email,
-  recommenderName: user.displayName,
-  recommenderImg: user.photoURL,
-  timeStamp: new Date().toISOString(),
-};
+    const recommendation = {
+      ...formData,
+      queryId: queryData._id.toString(),
+      queryTitle: queryData.ProductTitle,
+      originalProductName: queryData.ProductName,
+      recommendedProductName: formData.recommendedProductName,
+      userEmail: queryData.applicant_email,
+      userName: queryData.applicant_name,
+      recommenderEmail: user.email,
+      recommenderName: user.displayName,
+      recommenderImg: user.photoURL,
+      timeStamp: new Date().toISOString(),
+    };
 
     try {
-      const res = await fetch("http://localhost:5000/recommendations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(recommendation),
-      });
+      const res = await fetch(
+        "https://smart-pickr-server.vercel.app/recommendations",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(recommendation),
+        }
+      );
 
       if (!res.ok) {
         const error = await res.json();

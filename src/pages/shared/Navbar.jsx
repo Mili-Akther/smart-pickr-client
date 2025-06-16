@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import {
   CgProfile,
@@ -12,7 +12,44 @@ import logo from "../../assets/technology-logo/technology-50.png";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [search, setSearch] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/products/search?query=${search}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Search Results:", data);
+      });
+  };
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+
+    if (value.length > 1) {
+      fetch(`http://localhost:5000/products/search?query=${value}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setSuggestions(data);
+          setShowDropdown(true);
+        });
+    } else {
+      setSuggestions([]);
+      setShowDropdown(false);
+      
+    }
+  };
+  const handleSelectSuggestion = (item) => {
+    console.log("Selected item:", item);
+    setSearch(item.ProductName);
+    setSuggestions([]);
+    setShowDropdown(false);
+    navigate(`/products/${item._id}`);
+  };
+  
+  
   const handleSignOut = () => {
     signOutUser()
       .then(() => console.log("Successful sign out"))
@@ -129,7 +166,42 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end space-x-4 text-xl">
-        <CgSearch className="cursor-pointer hover:text-blue-400" />
+        <div className="relative w-full max-w-xs">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={search}
+            onChange={handleSearchChange}
+            className="input w-full"
+          />
+          {showDropdown && suggestions.length > 0 && (
+            <ul className="absolute bg-white shadow-lg border w-full z-50 max-h-60 overflow-y-auto text-black">
+              {suggestions.map((item) => (
+                <li
+                  key={item._id}
+                  onClick={() => handleSelectSuggestion(item)}
+                  className="flex gap-3 items-center p-2 cursor-pointer hover:bg-gray-100"
+                >
+                  <img
+                    src={item.ProductImageURL}
+                    alt=""
+                    className="w-10 h-10 object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-sm">{item.ProductName}</p>
+                    <p className="text-green-600 text-xs">
+                      BDT {item.ProductPrice}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+          <CgSearch
+            onClick={handleSearch}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hover:text-blue-400"
+          />
+        </div>
 
         {user?.email ? (
           <>

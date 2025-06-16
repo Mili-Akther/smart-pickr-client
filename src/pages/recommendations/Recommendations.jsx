@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-
 const renderStars = (rating) => {
   const filledStars = Math.floor(rating);
   const stars = [];
@@ -18,18 +17,17 @@ const renderStars = (rating) => {
   return stars;
 };
 
-
 const Recommendations = ({ productName }) => {
   const [recommendations, setRecommendations] = useState([]);
   const [helpfulCounts, setHelpfulCounts] = useState({});
 
   useEffect(() => {
     const url = productName
-      ? `http://localhost:5000/recommendations?productName=${encodeURIComponent(
+      ? `https://smart-pickr-server.vercel.app/recommendations?productName=${encodeURIComponent(
           productName
         )}`
-      : "http://localhost:5000/recommendations";
-  
+      : "https://smart-pickr-server.vercel.app/recommendations";
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -41,7 +39,7 @@ const Recommendations = ({ productName }) => {
         setHelpfulCounts(initialCounts);
       })
       .catch((err) => console.error("Fetch error:", err));
-  }, [productName]); 
+  }, [productName]);
   const handleHelpfulClick = (id) => {
     setHelpfulCounts((prev) => ({
       ...prev,
@@ -123,4 +121,3 @@ const Recommendations = ({ productName }) => {
 };
 
 export default Recommendations;
-

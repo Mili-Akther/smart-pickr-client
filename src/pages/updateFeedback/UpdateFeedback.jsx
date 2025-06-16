@@ -8,9 +8,9 @@ const UpdateFeedback = () => {
   const [feedback, setFeedback] = useState(null);
 
   useEffect(() => {
-      fetch(`http://localhost:5000/product-application/${id}`)
-        .then((res) => res.json())
-        .then((data) => setFeedback(data));
+    fetch(`https://smart-pickr-server.vercel.app/product-application/${id}`)
+      .then((res) => res.json())
+      .then((data) => setFeedback(data));
   }, [id]);
 
   const handleUpdate = async (e) => {
@@ -27,14 +27,13 @@ const UpdateFeedback = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/product-application/${id}`,
+        `https://smart-pickr-server.vercel.app/product-application/${id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedFeedback),
         }
       );
-          
 
       const data = await res.json();
 

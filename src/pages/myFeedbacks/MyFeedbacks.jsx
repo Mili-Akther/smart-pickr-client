@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
-import { Link, useNavigate } from 'react-router';
-import Swal from 'sweetalert2';
-import { FaEdit } from 'react-icons/fa';
-import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { FcViewDetails } from 'react-icons/fc';
+import React, { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin2Fill } from "react-icons/ri";
+import { FcViewDetails } from "react-icons/fc";
 
 const MyFeedbacks = () => {
   const { user } = useAuth();
@@ -13,7 +13,9 @@ const MyFeedbacks = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/product-Feedback?email=${user.email}`)
+      fetch(
+        `https://smart-pickr-server.vercel.app/product-Feedback?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           const sortedData = data.sort(
@@ -23,7 +25,6 @@ const MyFeedbacks = () => {
         });
     }
   }, [user?.email]);
-
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -36,9 +37,12 @@ const MyFeedbacks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product-application/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://smart-pickr-server.vercel.app/product-application/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -96,10 +100,7 @@ const MyFeedbacks = () => {
 
                 <div className="flex justify-between">
                   <Link to={`/products/${_id}`}>
-                    <button
-                   
-                      className="btn btn-sm  bg-blue-500 hover:bg-blue-600 border-none"
-                    >
+                    <button className="btn btn-sm  bg-blue-500 hover:bg-blue-600 border-none">
                       <FcViewDetails /> View Details
                     </button>
                   </Link>
@@ -133,5 +134,5 @@ const MyFeedbacks = () => {
     </div>
   );
 };
-      
+
 export default MyFeedbacks;

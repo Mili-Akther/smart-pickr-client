@@ -1,21 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { Link } from "react-router";
+import Loading from "../Loading";
+
+
 
 const ShopAllProducts = () => {
+  // const {products, loading}= useProducts();
+  const [loading, setLoading] = useState(true);
+
   const [products, setProducts] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc");
- 
+
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    setLoading(true);
+    fetch("https://smart-pickr-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         const sortedData = [...data].sort(
           (a, b) => b.ProductPrice - a.ProductPrice
         );
         setProducts(sortedData);
+        setLoading(false);
       });
   }, []);
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <div className="text-lg">
+          <Loading />
+        </div>
+      </div>
+    );
+  }
+  
 
   const handleSortByPrice = () => {
     const sorted = [...products].sort((a, b) => {

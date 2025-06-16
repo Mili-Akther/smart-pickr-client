@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
-import GTX from "../../assets/Frontline-2/NVIDIA_GeForce_RTX_4060_Ti_8GB_GDDR6_Video_Card.png";
-import sony from "../../assets/Frontline-2/Sony Zv1 Mirorless DSLR Cemera.png";
+import GTX from "../../assets/Product-pic/Frontline-2/NVIDIA_GeForce_RTX_4060_Ti_8GB_GDDR6_Video_Card.png";
+import sony from "../../assets/Product-pic/Frontline-2/Sony Zv1 Mirorless DSLR Cemera.png";
 
 const PromoCards = () => {
   return (

@@ -18,7 +18,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/products/search?query=${search}`)
+    fetch(
+      `https://smart-pickr-server.vercel.app/products/search?query=${search}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("Search Results:", data);
@@ -29,7 +31,9 @@ const Navbar = () => {
     setSearch(value);
 
     if (value.length > 1) {
-      fetch(`http://localhost:5000/products/search?query=${value}`)
+      fetch(
+        `https://smart-pickr-server.vercel.app/products/search?query=${value}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setSuggestions(data);
@@ -38,7 +42,6 @@ const Navbar = () => {
     } else {
       setSuggestions([]);
       setShowDropdown(false);
-      
     }
   };
   const handleSelectSuggestion = (item) => {
@@ -48,8 +51,7 @@ const Navbar = () => {
     setShowDropdown(false);
     navigate(`/products/${item._id}`);
   };
-  
-  
+
   const handleSignOut = () => {
     signOutUser()
       .then(() => console.log("Successful sign out"))
@@ -104,10 +106,10 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-black text-white px-4 shadow-md">
+    <div className="navbar   px-4 shadow-md">
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
-          <button tabIndex={0} className="btn btn-ghost text-white">
+          <button tabIndex={0} className="btn btn-ghost ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -166,13 +168,14 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end space-x-4 text-xl">
-        <div className="relative w-full max-w-xs">
+        <div className="relative w-full max-w-xs ">
           <input
             type="text"
             placeholder="Search products..."
             value={search}
             onChange={handleSearchChange}
-            className="input w-full"
+            className="input w-full text-black bg-gray-300 bg-opacity-70
+               backdrop-blur-md"
           />
           {showDropdown && suggestions.length > 0 && (
             <ul className="absolute bg-white shadow-lg border w-full z-50 max-h-60 overflow-y-auto text-black">
@@ -199,7 +202,7 @@ const Navbar = () => {
           )}
           <CgSearch
             onClick={handleSearch}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hover:text-blue-400"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-black cursor-pointer hover:text-blue-400"
           />
         </div>
 

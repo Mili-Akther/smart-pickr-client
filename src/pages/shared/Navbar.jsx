@@ -66,11 +66,6 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/pages" className="text-white hover:text-blue-400">
-          Pages
-        </Link>
-      </li>
-      <li>
         <Link to="/shopAllProducts" className="text-white hover:text-blue-400">
           Shop All Products
         </Link>
@@ -109,7 +104,7 @@ const Navbar = () => {
     <div className="border border-gray-500 border-t-gray-500 border-b-gray-500 border-l-black border-r-black">
       <div className="navbar px-4 shadow-md max-w-[1800px] mx-auto ">
         <div className="navbar-start">
-          <div className="dropdown lg:hidden">
+          <div className="dropdown lg:hidden ">
             <button tabIndex={0} className="btn btn-ghost ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +148,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <div className="navbar-start">
+          <div className="navbar-start flex items-center space-x-6">
             <Link to="/" className="flex flex-col items-center">
               <img
                 src={logo}
@@ -164,11 +159,10 @@ const Navbar = () => {
                 SmartPickr<span className="text-blue-500">.</span>
               </span>
             </Link>
+            <div className="navbar-center hidden lg:flex">
+              <ul className="menu menu-horizontal space-x-4">{links}</ul>
+            </div>
           </div>
-        </div>
-
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-4">{links}</ul>
         </div>
 
         <div className="navbar-end space-x-4 text-xl">
@@ -178,8 +172,7 @@ const Navbar = () => {
               placeholder="Search products..."
               value={search}
               onChange={handleSearchChange}
-              className="input w-full text-black bg-gray-300 bg-opacity-70
-               backdrop-blur-md"
+              className="input w-full bg-blue-500/20 backdrop-blur-md placeholder-white text-white rounded-md focus:ring-1 focus:ring-blue-400"
             />
             {showDropdown && suggestions.length > 0 && (
               <ul className="absolute bg-white shadow-lg border w-full z-50 max-h-60 overflow-y-auto text-black">
@@ -206,7 +199,7 @@ const Navbar = () => {
             )}
             <CgSearch
               onClick={handleSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-black cursor-pointer hover:text-blue-400"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white cursor-pointer hover:text-blue-400"
             />
           </div>
 

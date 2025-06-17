@@ -14,12 +14,13 @@ import ShopAllProducts from "../pages/shopAllProducts/ShopAllProducts";
 import Recommendations from "../pages/recommendations/Recommendations";
 import MyRecommendations from "../pages/myRecommendations/MyRecommendations";
 import RecommendationsForMe from "../pages/recommendationsForMe/RecommendationsForMe";
+import Error from "../Components/Error/Error";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h2>Route not Found</h2>,
+    // errorElement: <h2>Route not Found</h2>,
     children: [
       {
         path: "/",
@@ -84,6 +85,10 @@ const routes = createBrowserRouter([
         element: <LogIn></LogIn>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error></Error>,
   },
 ]);
 

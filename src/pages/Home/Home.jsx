@@ -4,6 +4,7 @@ import HotProduct from './HotProduct';
 import PromoCards from './PromoCards';
 import TrendingSlider from './TrendingSlider';
 import DiscountSection from './DiscountSection';
+import Info from './Info';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <PromoCards></PromoCards>
             <TrendingSlider></TrendingSlider>
             <DiscountSection></DiscountSection>
+            <Info></Info>
             </div>
       );
 };

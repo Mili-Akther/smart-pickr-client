@@ -68,7 +68,7 @@ const RecommendationsForMe = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6 text-black">
+    <div className="max-w-[1400px] mx-auto p-6 text-black">
       <h1 className="text-3xl font-bold mb-6 text-white">
         Recommendations For Me
       </h1>

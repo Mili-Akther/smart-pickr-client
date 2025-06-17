@@ -16,7 +16,11 @@ const brands = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6];
 
 const DiscountSection = () => {
   return (
-    <div className="bg-[#121213c9] px-10 py-16 mb-8">
+    <div className="bg-[#121213c9] px-10 py-12 mb-8">
+      <h2 className="text-3xl font-bold mb-12 text-center">
+        Popular Brands
+      </h2>
+
       {/* Brand Logos */}
       <div className="flex justify-between items-center mx-auto mb-12 border-b border-gray-700 pb-8 max-w-6xl">
         {brands.map((brand, idx) => (

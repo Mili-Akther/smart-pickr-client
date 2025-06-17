@@ -36,10 +36,7 @@ SmartPickr is a full-stack web application where users can submit product-relate
 ## 🏠 Screenshots
 
 ### Home Page  
-![Home Screenshot](https://i.ibb.co/example-link/homepage.png)
-
-### Recommendation Section  
-![Recommendations Screenshot](https://i.ibb.co/example-link/recommendations.png)
+![Home Screenshot](./src/assets/img/home.png)
 
 ---
 

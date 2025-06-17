@@ -18,6 +18,7 @@ const Footer = () => {
       transition={{ duration: 1 }}
       className=" bg-gradient-to-r from-[#272727] to-[#000000] text-white pt-20 pb-8 px-6 md:px-20 relative overflow-hidden"
     >
+      
       {/* Animated Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}

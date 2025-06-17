@@ -72,7 +72,7 @@ const ProductDetails = ({ currentUser, }) => {
             </button>
             <input
               type="number"
-              className="input input-bordered w-16 text-center"
+              className="input input-bordered w-16 text-center text-black"
               value={quantity}
               onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
             />
@@ -82,7 +82,7 @@ const ProductDetails = ({ currentUser, }) => {
             >
               +
             </button>
-            <button className="btn bg-blue-600 ml-4 flex gap-2 items-center">
+            <button className="btn bg-blue-600 ml-4 flex gap-2 items-center border-none">
               <FaShoppingCart /> ADD TO CART
             </button>
           </div>
@@ -104,8 +104,8 @@ const ProductDetails = ({ currentUser, }) => {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
             {/* Help Box */}
-            <div className="bg-base-200 rounded shadow-sm h-14 flex items-center justify-center w-full sm:w-[230px]">
-              <div className="flex items-center gap-2 text-xs sm:text-base">
+            <div className="bg-gray-500 rounded shadow-sm h-14 flex items-center justify-center w-full sm:w-[230px] ">
+              <div className="flex items-center gap-2 text-xs sm:text-base text-black ">
                 <FaPhone className="text-2xl sm:text-3xl" />
                 <span>Need help? Call Us: 9845364827312</span>
               </div>
@@ -114,7 +114,7 @@ const ProductDetails = ({ currentUser, }) => {
             {/* Submit Feedback Button */}
             <div className="w-full sm:w-[230px]">
               <Link to={`/productFeedback/${_id}`}>
-                <button className="btn bg-blue-600 text-white h-14 w-full text-sm sm:text-base hover:bg-blue-700">
+                <button className="btn bg-blue-600 text-white h-14 w-full text-sm sm:text-base hover:bg-blue-700 border-none">
                   Not satisfied with this product?
                 </button>
               </Link>

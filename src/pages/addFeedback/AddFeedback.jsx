@@ -94,7 +94,7 @@ const AddFeedback = () => {
             type="text"
             value={product.ProductName}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black "
           />
         </div>
 
@@ -106,7 +106,7 @@ const AddFeedback = () => {
             type="text"
             value={product.ProductBrand}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
         {/* Product Price */}
@@ -117,7 +117,7 @@ const AddFeedback = () => {
             type="text"
             value={product.ProductPrice}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
 
@@ -128,7 +128,7 @@ const AddFeedback = () => {
             type="text"
             value={product.ProductImageURL}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
 
@@ -140,7 +140,7 @@ const AddFeedback = () => {
             type="text"
             placeholder="Is there any better product that gives me the same quality?"
             required
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
 
@@ -153,7 +153,7 @@ const AddFeedback = () => {
             name="boycottReason"
             required
             placeholder="Share your reason why you’re boycotting or your concern..."
-            className="textarea textarea-bordered w-full"
+            className="textarea textarea-bordered w-full text-black"
           />
         </div>
 

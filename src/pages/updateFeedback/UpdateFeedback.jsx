@@ -67,7 +67,7 @@ const UpdateFeedback = () => {
             type="text"
             value={feedback.productName}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
 
@@ -77,7 +77,7 @@ const UpdateFeedback = () => {
             type="text"
             value={feedback.productBrand}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
         <div>
@@ -86,7 +86,7 @@ const UpdateFeedback = () => {
             type="text"
             value={feedback.ProductPrice}
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
 
@@ -96,7 +96,7 @@ const UpdateFeedback = () => {
             name="queryTitle"
             defaultValue={feedback.queryTitle}
             required
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
           />
         </div>
 
@@ -106,7 +106,7 @@ const UpdateFeedback = () => {
             name="boycottReason"
             defaultValue={feedback.boycottReason}
             required
-            className="textarea textarea-bordered w-full"
+            className="textarea textarea-bordered w-full text-black"
           ></textarea>
         </div>
 

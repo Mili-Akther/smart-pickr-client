@@ -2,7 +2,7 @@
 
 SmartPickr is a full-stack web application where users can submit product-related queries and receive community-driven product recommendations. Designed for tech enthusiasts and shoppers to find the best product alternatives based on real feedback.
 
-🌐 **Live Demo**: [SmartPickr Live](https://your-deployed-site-link.com)
+🌐 **Live Demo**: [SmartPickr Live](https://smart-pickr.web.app)
 
 ---
 

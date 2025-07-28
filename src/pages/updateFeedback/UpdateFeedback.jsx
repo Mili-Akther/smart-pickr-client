@@ -57,7 +57,7 @@ const UpdateFeedback = () => {
   if (!feedback) return <p className="text-center">Loading...</p>;
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className="max-w-3xl mx-auto p-4 bg-white/20 backdrop-blur-none">
       <h1 className="text-2xl font-bold mb-4 text-center">Update Feedback</h1>
 
       <form onSubmit={handleUpdate} className="flex flex-col gap-3">

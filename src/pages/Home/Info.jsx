@@ -71,7 +71,7 @@ const Info = () => {
       </div>
 
       {/* Bottom Product Section */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Card 1 - Watch */}
         <motion.div
           variants={slideFromLeft}
@@ -114,7 +114,7 @@ const Info = () => {
               SHOP NOW →
             </button>
           </div>
-          <div className="w-[800px]  h-30 mask-b-from-50% overflow-hidden mx-auto -mb-6">
+          <div className="w-[800px] h-30 mask-b-from-50% overflow-hidden mx-auto -mb-6">
             <img
               src={Tablet}
               alt="Tablet"

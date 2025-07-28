@@ -16,9 +16,8 @@ const Footer = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className=" bg-gradient-to-r from-[#272727] to-[#000000] text-white pt-20 pb-8 px-6 md:px-20 relative overflow-hidden"
+      className="bg-gradient-to-r from-[#272727] to-[#000000] text-white pt-20 pb-8 px-6 md:px-20 relative overflow-hidden"
     >
-      
       {/* Animated Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -27,24 +26,23 @@ const Footer = () => {
         className="text-center mb-20"
       >
         <GradientText animationSpeed={6}>CONNECT WITH SMARTPICKR</GradientText>
-
-        <p className="mt-4 text-base md:text-lg text-gray-400">
+        <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-400">
           Subscribe to our newsletter and follow us on socials
         </p>
       </motion.div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 text-sm">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 text-sm text-center sm:text-left">
         {/* Logo & Socials */}
-        <div className="col-span-1 text-center md:text-left -mt-12">
+        <div className="col-span-1 -mt-12">
           <img
             src={logo}
             alt="SmartPickr"
-            className="w-auto h-20 mx-auto md:mx-0 drop-shadow-[0_0_10px_blue] brightness-150"
+            className="w-auto h-16 sm:h-20 mx-auto sm:mx-0 drop-shadow-[0_0_10px_blue] brightness-150"
           />
-          <h1 className="text-xl font-bold">SmartPickr</h1>
+          <h1 className="text-xl font-bold mt-2">SmartPickr</h1>
           <p className="text-gray-400 text-sm mt-2">support@smartpickr.com</p>
-          <div className="flex gap-4 mt-4 justify-center md:justify-start text-2xl ">
+          <div className="flex gap-4 mt-4 justify-center sm:justify-start text-2xl">
             {[FaFacebookF, FaLinkedinIn, FaInstagram, FaDiscord, FaTwitter].map(
               (Icon, i) => (
                 <motion.a
@@ -118,15 +116,15 @@ const Footer = () => {
 
       {/* Pulse animation */}
       <style>{`
-        .animate-pulse {
-          animation: pulseText 3s ease-in-out infinite;
-        }
+    .animate-pulse {
+      animation: pulseText 3s ease-in-out infinite;
+    }
 
-        @keyframes pulseText {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.05); }
-        }
-      `}</style>
+    @keyframes pulseText {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+  `}</style>
     </motion.footer>
   );
 };

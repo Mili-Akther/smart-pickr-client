@@ -17,12 +17,10 @@ const brands = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6];
 const DiscountSection = () => {
   return (
     <div className="bg-[#121213c9] px-10 py-12 mb-8">
-      <h2 className="text-3xl font-bold mb-12 text-center">
-        Popular Brands
-      </h2>
+      <h2 className="text-3xl font-bold mb-12 text-center">Popular Brands</h2>
 
       {/* Brand Logos */}
-      <div className="flex justify-between items-center mx-auto mb-12 border-b border-gray-700 pb-8 max-w-6xl">
+      <div className="flex justify-between items-center mx-auto mb-12 border-b border-gray-700 pb-8 max-w-6xl overflow-x-auto scrollbar-hide">
         {brands.map((brand, idx) => (
           <motion.div
             key={idx}
@@ -41,32 +39,39 @@ const DiscountSection = () => {
               repeatType: "mirror",
               delay: idx * 2.3,
             }}
+            className="flex-shrink-0 mx-4"
           >
             <img
               src={brand}
               alt={`brand-${idx + 1}`}
-              className="h-32 object-contain mx-6"
+              className="h-24 sm:h-28 md:h-32 object-contain"
             />
           </motion.div>
         ))}
       </div>
 
       {/* Discount Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1820px] h-70">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1820px] h-auto">
         {/* Card 1 */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative bg-gradient-to-r from-[#3b39397e] to-[#09092591] rounded-xl p-6 flex items-center"
+          className="relative bg-gradient-to-r from-[#3b39397e] to-[#09092591] rounded-xl p-6 flex flex-col sm:flex-row items-center"
         >
-          <div className="text-white">
-            <h2 className="text-4xl font-bold mb-3">Limited Weekly Discount</h2>
-            <button className="text-xs font-semibold mt-12 text-white underline">
+          <div className="text-white sm:w-1/2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
+              Limited Weekly Discount
+            </h2>
+            <button className="text-xs font-semibold mt-6 sm:mt-12 text-white underline">
               SHOP NOW →
             </button>
           </div>
-          <img src={Controller} alt="controller" className="h-70 ml-auto" />
+          <img
+            src={Controller}
+            alt="controller"
+            className="h-40 sm:h-60 lg:h-70 ml-auto mt-4 sm:mt-0"
+          />
         </motion.div>
 
         {/* Card 2 */}
@@ -74,18 +79,31 @@ const DiscountSection = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative bg-gradient-to-r from-[#3b39397e] to-[#09092591] rounded-xl p-6 text-white"
+          className="relative bg-gradient-to-r from-[#3b39397e] to-[#09092591] rounded-xl p-6 text-white overflow-hidden"
         >
-          <div className="w-sm">
-            <h2 className="text-4xl font-bold mb-4 mt-12">Photo Drones</h2>
+          <div className="w-full">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 mt-6">
+              Photo Drones
+            </h2>
             <p className="text-sm">MF841HN/A 13"</p>
             <p className="text-xs mt-2">DISCOUNT -30%</p>
             <p className="text-2xl font-bold mt-2">$75</p>
           </div>
+
+          {/* Image */}
+          <div className="block lg:hidden mt-4">
+            <img
+              src={Drone}
+              alt="drone"
+              className="h-48 sm:h-60 object-contain mx-auto md:w-100 md:h-[320px]"
+            />
+          </div>
+
+          {/* Image for large screens only */}
           <img
             src={Drone}
             alt="drone"
-            className="absolute bottom-2 right-1 h-82 md:w-60 lg:w-92 object-contain ml-auto "
+            className="hidden lg:block absolute bottom-1 right-1 h-60 lg:h-82  object-contain md:w-60 lg:w-92"
           />
         </motion.div>
 
@@ -94,17 +112,21 @@ const DiscountSection = () => {
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative bg-gradient-to-r from-[#3b39397e] to-[#09092591] rounded-xl p-6 text-white flex items-center"
+          className="relative bg-gradient-to-r from-[#3b39397e] to-[#09092591] rounded-xl p-6 text-white flex flex-col sm:flex-row items-center"
         >
-          <div>
-            <h2 className="text-4xl font-bold ">
+          <div className="sm:w-1/2 ">
+            <h2 className=" text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
               PC Parts <br /> & Elements
             </h2>
             <button className="text-xs font-semibold mt-2 underline">
               SHOP NOW →
             </button>
           </div>
-          <img src={Mouse} alt="mouse" className="h-34 ml-auto" />
+          <img
+            src={Mouse}
+            alt="mouse"
+            className="h-28 sm:h-34 ml-auto mt-4 sm:mt-0"
+          />
         </motion.div>
       </div>
     </div>

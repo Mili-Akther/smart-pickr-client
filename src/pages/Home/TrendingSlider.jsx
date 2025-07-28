@@ -51,21 +51,31 @@ const products = [
 const TrendingSlider = () => {
   return (
     <div className="bg-black text-white p-12">
-      <h2 className="text-3xl font-bold mb-4">Trending Products</h2>
+      <h2 className="text-3xl font-bold mb-4 ">Trending Products</h2>
       <Swiper
         modules={[Autoplay, Navigation]}
         spaceBetween={30}
-        slidesPerView={4}
         navigation
         loop
         autoplay={{ delay: 3000 }}
         className="pb-6"
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <div className="bg-[#1c1c1e] rounded-xl p-4 hover:scale-105 transition-all duration-300">
+            <div className="bg-[#1c1c1e] rounded-xl p-8  hover:scale-105 transition-all duration-300 relative">
               <div className="absolute top-3 right-3 text-white text-xl cursor-pointer">
-                <CgHeart></CgHeart>
+                <CgHeart />
               </div>
               <p className="text-sm text-gray-400 mb-2">{product.category}</p>
               <img

@@ -29,8 +29,10 @@ const LogIn = () => {
 };
   return (
     <div className="min-h-screen flex items-center justify-center  ">
-      <div className="w-full max-w-lg p-10 rounded-lg shadow-2xl">
-        <h1 className="text-center mt-8 mb-12 text-5xl font-bold ">Login now!</h1>
+      <div className="w-full max-w-lg p-10 rounded-lg shadow-2xl bg-white/20 backdrop-blur-none">
+        <h1 className="text-center mt-8 mb-12 text-5xl font-bold ">
+          Login now!
+        </h1>
         <form onSubmit={handleSignIn}>
           <div className="mb-4 ">
             <label className="block mb-1 font-medium ">Email</label>
@@ -82,13 +84,7 @@ const LogIn = () => {
         <div className="flex items-center justify-center my-4">
           <span className="text-gray-400 text-sm">or</span>
         </div>
-
-  
-         
-        
-          <SocialLogin></SocialLogin>
-     
-       
+        <SocialLogin></SocialLogin>
       </div>
     </div>
   ); 

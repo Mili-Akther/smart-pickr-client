@@ -18,7 +18,7 @@ const SocialLogin = () => {
       }
       return (
         <div className="m-4 mx-auto">
-          <div className="divider">OR</div>
+         
           <button onClick={handleGoogleSignIn}  className="w-full flex items-center justify-center gap-2 bg-blue-600  text-white py-2 rounded hover:bg-blue-800 transition">
             <BsGoogle />
             Continue With Google
